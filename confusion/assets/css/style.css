@@ -11,3 +11,6 @@ body{
 .form-group {
     padding: .5rem;
 }
+span.badge {
+    margin: 0 0.5rem;
+}
