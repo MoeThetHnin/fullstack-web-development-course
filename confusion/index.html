@@ -170,9 +170,9 @@
     </header>
 
     <div class="container p-3">
-        <div class="row row-content">
+        <div class="row row-content py-5">
             <div class="col">
-                <div id="mycarousel" class="carousel slide" data-bs-ride="false">
+                <div id="mycarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="100">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active">
                             <img class="d-block img-fluid"
@@ -218,6 +218,14 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
+                    <div class="btn-group" id="carouselButton">
+                        <button class="btn btn-danger btn-sm" id="carousel-pause">
+                            <span class="fa fa-pause"></span>
+                        </button>
+                        <button class="btn btn-danger btn-sm" id="carousel-play">
+                            <span class="fa fa-play"></span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -328,19 +336,23 @@
     </footer>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- <script>
-        //Javascript
-        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            console.log("Jquery Ready")
+            // $("#mycarousel").carousel( { interval: 2000 } );
+            // $("#mycarousel").carousel({interval: 10000});
+            $("#carousel-pause").click(function(){
+                console.log("Pause")
+                $("#mycarousel").carousel('pause')
+            });
+            $("#carousel-play").click(function(){
+                console.log("Play")
+                $("#mycarousel").carousel('cycle');
+            });
+        });
+    </script>
 
-        //jQuery
-        // $(document).ready(function(){
-        //     $('[data-bs-toggle="tooltip"]').tooltip();
-        // });
-    </script> -->
 </body>
 
 </html>
