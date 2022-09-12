@@ -39,3 +39,6 @@ span.badge {
     bottom: 0px;
     z-index: 1;
 }
+.col {
+    position: relative;
+}
