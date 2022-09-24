@@ -32,20 +32,24 @@
                 </ul>    
             </div>   
             <span class="navbar-text">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
                     <span class="fa fa-sign-in"></span> Login
-                  </button>
+                  </button> -->
+                <button type="button" class="btn btn-primary" onclick="openLoginModal()">
+                    <span class="fa fa-sign-in"></span> Login
+                </button>
             </span>     
         </div>
     </nav>
 
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" onclick="clickOnModal(event)">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="exampleModalLabel">Login</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                    <button type="button" class="btn-close" aria-label="Close" onclick="closeLoginModal()"></button>
                 </div>
                 <div class="modal-body">
                     <form>
@@ -67,7 +71,7 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <button type="button" class="btn btn-secondary btn-sm ml-auto" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-secondary btn-sm ml-auto" onclick="closeLoginModal()">Cancel</button>
                             <button type="submit" class="btn btn-primary btn-sm ml-1">Sign in</button>        
                         </div>
                     </form>
@@ -341,6 +345,46 @@
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>
     <script>
+        function openLoginModal() {
+
+            const div = document.createElement("div")
+            
+            div.className = "modal-backdrop fade show";
+            
+            document.body.appendChild(div);
+            
+            console.log("div ", document.body.lastChild)       
+
+            var loginModalElement = document.getElementById("loginModal");
+            console.log("Login Modal Element " , loginModalElement.style)
+            loginModalElement.style.display = "block"
+            console.log("Login Modal Element Style Display " , loginModalElement.style.display)
+            
+            console.log("Login Modal Element Original Class" , loginModalElement.className)
+            console.log("Login Modal Element Original Class List" , loginModalElement.classList)
+            loginModalElement.classList.add("show")
+            console.log("Login Modal Element Modified Class List" , loginModalElement.classList)
+
+
+        }
+
+        function clickOnModal(e){
+            console.log("event ",e)
+            if(e.target.id == "loginModal"){
+                closeLoginModal()
+            }
+        }
+
+
+        function closeLoginModal() {
+            console.log("Close Login Modal.")
+            var loginModalElement = document.getElementById("loginModal");
+            loginModalElement.style.display = "none";
+            loginModalElement.classList.remove("show");
+            
+            document.body.removeChild(document.body.lastChild);
+        }
+
         $(document).ready(function(){
             console.log("Jquery Ready")
             
